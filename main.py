@@ -1,4 +1,5 @@
 import os 
+import shutil
 
 
 #Функция регистрации для пользователя
@@ -44,10 +45,23 @@ def read_file(filename, inside_folder=False):
     with open(filename,'r',encoding='utf-8') as f:
         print(f.read())
 
-            
+#Переименование файла, 1-ый параметр настоящее имя, 2-ой параметр измененное имя, 3-ий параметр название директории для перехода
+def rename_file(curr_name,new_name,inside_folder=False):
+    if inside_folder:
+        os.chdir(inside_folder)
+    os.rename(curr_name,new_name)
 
+#Перемещение файла(указывать полный путь)  
+def move_file(curr_dir,new_dir):
+    shutil.move(curr_dir,new_dir)
 
+#Копируем файл из одной папки в другую, 1-ый параметр- название файла, 2-ой название папки, 3-ий если хотим перейти в другую директорию
+def copy_text_file(filename,foldername,inside_folder=False):
+    if inside_folder:
+        os.chdir(inside_folder)
+    shutil.copy(filename,foldername)
 
 
 sign_in()
-create_folder('frwrwerwer','whate2ver')
+#move_file('C:\\Users\\Nikita\\Desktop\\file-manager\\nikita\\new','C:\\Users\\Nikita\\Desktop\\file-manager\\nikita\\whate2ver\\new')
+
